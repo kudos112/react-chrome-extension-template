@@ -3,15 +3,14 @@ const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-  mode: "production",
   target: "web",
   entry: {
-    contentScript: "./src/contentScript/index.tsx",
+    contentScript: "./src/contentScript/index.ts",
     background: "./src/background/index.ts",
     popup: "./src/popup/index.tsx",
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.join(__dirname, "../dist"),
     filename: "[name].js",
     clean: true,
   },
@@ -22,8 +21,8 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         {
-          from: path.resolve("manifest.json"),
-          to: path.resolve("dist"),
+          from: path.join(__dirname, "../manifest.json"),
+          to: path.join(__dirname, "../dist"),
         },
       ],
     }),
@@ -47,6 +46,6 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [".ts", ".tsx",],
-  }
+    extensions: [".ts", ".tsx"],
+  },
 };
