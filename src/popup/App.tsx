@@ -1,3 +1,5 @@
+import './App.css';
+
 const App: React.FC = () => (
   <main>
     <h1>Hello, world!</h1>
